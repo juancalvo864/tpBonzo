@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1730163605 source:c:\users\calvo\desktop\utn\programacion 1\bonzo-grupo2\main.cpp
+	<iostream>
+	<cctype>
+	"funciones.h"
+
+1730169075 c:\users\calvo\desktop\utn\programacion 1\bonzo-grupo2\funciones.h
+	<ctime>
+	<cctype>
+	<iostream>
+	<string>
+	<vector>
+
