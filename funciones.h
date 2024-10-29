@@ -4,7 +4,6 @@
 #include <cctype>
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -15,7 +14,7 @@ using namespace std;
 
  }
 
- int sumar (int nroDados,vector<int>dados){
+ int sumar (int nroDados,int dados[]){
      int suma = 0;
     for(int i = 0;i<nroDados;i++){
         suma+= dados[i];
@@ -30,7 +29,6 @@ using namespace std;
     string jugador1,jugador2;
     char continuar = 'S';
     char tirarDado;
-    int dado1,dado2,dado3;
     int puntosJugador1 = 0;
     int puntosJugador2 = 0;
     int acumPuntos;
@@ -66,10 +64,10 @@ using namespace std;
         cout <<endl;
         cout<< "Ahora si, que alguien lance un dado!!"<<endl;
         cout <<endl;
-        dado1=lanzarDados();
+        dado[0]=lanzarDados();
         cout<< "El numero del dado es: "<<dado1<<endl;
         cout <<endl;
-        int jugadorActual = dado1 % 2 == 0 ? 2 : 1;
+        int jugadorActual = dados[0] % 2 == 0 ? 2 : 1;
         cout<<"Comienza el jugador nro "<< jugadorActual <<"!!"<< endl;
         cout <<endl;
 
@@ -81,7 +79,7 @@ using namespace std;
                 acumPuntos = 0;
                 bool turnoTerminado = false;
                 continuar = 'S';
-                vector<int> dados(3);
+                int  dados[3];
                 int nroDados = 3;
 
                 cout << "Turno del jugador: " << ((jugadorActual == 1) ? jugador1 : jugador2) << endl;
