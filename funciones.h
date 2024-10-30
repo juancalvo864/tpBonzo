@@ -124,6 +124,71 @@ using namespace std;
     cout<<puntosJugador2<<endl;
 }
 
+
+
+void mostrarCaraDado(int numero) {
+    switch (numero) {
+        case 1:
+            cout << " ------- " << endl;
+            cout << "|       |" << endl;
+            cout << "|   *   |" << endl;
+            cout << "|       |" << endl;
+            cout << " ------- " << endl;
+            break;
+        case 2:
+            cout << " ------- " << endl;
+            cout << "| *     |" << endl;
+            cout << "|       |" << endl;
+            cout << "|     * |" << endl;
+            cout << " ------- " << endl;
+            break;
+        case 3:
+            cout << " ------- " << endl;
+            cout << "| *     |" << endl;
+            cout << "|   *   |" << endl;
+            cout << "|     * |" << endl;
+            cout << " ------- " << endl;
+            break;
+        case 4:
+            cout << " ------- " << endl;
+            cout << "| *   * |" << endl;
+            cout << "|       |" << endl;
+            cout << "| *   * |" << endl;
+            cout << " ------- " << endl;
+            break;
+        case 5:
+            cout << " ------- " << endl;
+            cout << "| *   * |" << endl;
+            cout << "|   *   |" << endl;
+            cout << "| *   * |" << endl;
+            cout << " ------- " << endl;
+            break;
+        case 6:
+            cout << " ------- " << endl;
+            cout << "| *   * |" << endl;
+            cout << "| *   * |" << endl;
+            cout << "| *   * |" << endl;
+            cout << " ------- " << endl;
+            break;
+        default:
+            cout << "Numero de cara invalido" << endl;
+            break;
+    }
+
+}
+void mostrarCartelInicio() {
+
+    cout << "****************************************************" << endl;
+    cout << "*                                                  *" << endl;
+    cout << "*      ____     ___    _   _   _____   ___         *" << endl;
+    cout << "*     | __ )   / _ \\  | \\ | | |__  /  / _ \\     *" << endl;
+    cout << "*     |  _ \\  | | | | |  \\| |   / /  | | | |     *" << endl;
+    cout << "*     | |_) | | |_| | | |\\  |  / /_  | |_| |      *" << endl;
+    cout << "*     |____/   \\___/  |_| \\_| /____|  \\___/     *" << endl;
+    cout << "*                                                  *" << endl;
+    cout << "****************************************************" << endl;
+    }
+
 #endif // FUNCIONES_H_INCLUDED
 
 
