@@ -10,3 +10,14 @@
 	<iostream>
 	<string>
 
+1730336363 source:c:\users\gise_\onedrive\documentos\bonzo\tpbonzo\main.cpp
+	<iostream>
+	<cctype>
+	"funciones.h"
+
+1730336363 c:\users\gise_\onedrive\documentos\bonzo\tpbonzo\funciones.h
+	<ctime>
+	<cctype>
+	<iostream>
+	<string>
+
