@@ -1,49 +1,10 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
+#include "funciones.h"
 
-
-
-
-void pedirNombres();
 void creditos();
 bool menu();
 
-
-
-void pedirNombres (){ //funcion jugar
-
-    string jugador1,jugador2;
-    string confirmacion = "no";
-
-    while (confirmacion != "si"){
-        system("cls");
-        cout<<"Ingrese el nombre del jugador 1: ";
-        cin>>jugador1;
-        cout<<endl;
-        cout<<"Ingrese el nombre del jugador 2: ";
-        cin>>jugador2;
-        cout<<endl;
-
-        cout<<"Jugador 1: "<< jugador1<<", Jugador 2: "<<jugador2<<endl;
-        cout<<endl;
-        cout<<"¿Confirmar nombres? (si/no): "<<endl;
-        cout<<endl;
-
-        cin>>confirmacion;
-        if (confirmacion == "no") {
-
-            cout<<endl;
-            cout << "Por favor, ingrese los nombres nuevamente"<<endl;
-            cout<<endl;
-            system("pause");
-
-        }
-
-    }
-    cout<<"Comienza el juego entre: "<<jugador1<<" y "<<jugador2<<endl;
-    cout<<endl;
-
-}
 
 void creditos(){
 
@@ -65,18 +26,18 @@ void creditos(){
 
 bool menu(){
 
-  int opciones;
-  while(true){
-      system("cls");
-      cout<<"BONZO"<<endl;
+      int opciones;
+
       cout<<endl;
-      cout<< "----Menu Bonzo----"<<endl;
+      cout<<endl;
+      cout<<endl;
+      cout<< "-------  Menu -------"<<endl;
       cout<<endl;
       cout<<"1) - JUGAR "<<endl;
       cout<<"2) - ESTADISTICAS "<<endl;
       cout<<"3) - CREDITOS "<<endl;
       cout<<endl;
-      cout<< "------------------"<<endl;
+      cout<< "---------------------"<<endl;
       cout<<endl;
       cout<<"0) - SALIR "<<endl;
       cout<<endl;
@@ -89,7 +50,7 @@ bool menu(){
             system("cls");     // opcion para ocultar el menu
             cout<< "- Jugar -"<<endl;
             cout<<endl;
-            pedirNombres();
+            jugar();
             system("pause");   // genera una pausa entre las opciones
         break;
         case 2:
@@ -97,6 +58,7 @@ bool menu(){
             cout<< "- Estadistica -"<<endl;
             cout<<endl;
             //estadisticas();
+            cout<<"Seccion estadistica";
             system("pause");
         break;
         case 3:
@@ -121,7 +83,7 @@ bool menu(){
 
 
 
-}
+
 
 
 
