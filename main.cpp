@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    mostrarCartelInicio();
     srand(time(nullptr));
 
     jugar();
