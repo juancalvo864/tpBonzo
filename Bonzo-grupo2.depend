@@ -21,3 +21,18 @@
 	<iostream>
 	<string>
 
+1730836389 source:c:\users\calvo\desktop\tpbonzo\main.cpp
+	<iostream>
+	<cctype>
+	"funciones.h"
+	"menu.h"
+
+1730834825 c:\users\calvo\desktop\tpbonzo\funciones.h
+	<ctime>
+	<cctype>
+	<iostream>
+	<string>
+
+1730836540 c:\users\calvo\desktop\tpbonzo\menu.h
+	"funciones.h"
+
