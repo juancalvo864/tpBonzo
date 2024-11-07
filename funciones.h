@@ -26,7 +26,6 @@ using namespace std;
  }
 
 
-
   //funcion Sumar
  int sumar (int nroDados,int dados[]){
      int suma = 0;
@@ -35,6 +34,73 @@ using namespace std;
     }
     return suma;
  }
+ //Funcion separador
+void separador(char indicador){
+    if(indicador == 's'){
+        cout <<endl;
+        cout << "-------------------------------------------------------" << endl;
+        cout <<endl;
+    }else if(indicador == 'b'){
+        cout <<"BONZO"<<endl;
+        cout << "-------------------------------------------------------" << endl;
+        cout <<endl;
+    }
+}
+
+//Funcioon pedir bnombre
+
+void cargarNombres(string &jugador1, string &jugador2,char &continuar) {
+
+    while (continuar == 'N') {
+        cout <<endl;
+        cout <<endl;
+        cout <<endl;
+        cout << "Antes de comenzar deben registrar sus nombres: "<<endl;
+        cout <<endl;
+        cout << "Ingrese nombre de jugador 1: ";
+        cin >> jugador1;
+        cout << "Ingrese nombre de jugador 2: ";
+        cin >> jugador2;
+        system("cls");
+        cout<< "Los jugadores son: "<<endl;
+        cout << endl;
+        cout << "Nombre jugador numero 1: " << jugador1 << endl;
+        cout << "Nombre jugador numero 2: " << jugador2 << endl;
+        cout << endl;
+
+        cout << "¿Confirmar nombres? (S/N): ";
+        cin >> continuar;
+        continuar = toupper(continuar);
+        system("cls");
+    }
+}
+
+//Funcion jugador inicial
+void jugadorInicial (int &jugadorActual,int dados[] ){
+        cout <<endl;
+        cout <<endl;
+        cout<<"Que comience el juego!!"<<endl;
+        cout <<endl;
+        cout<< "Recuerden que para tirar los dados lo van a hacer precionando la letra `T` + Enter.." <<endl;
+        cout <<endl;
+        cout<< "Antes de comenzar lancen un dado para ver quien comienza... "<<endl;
+        cout <<endl;
+        cout<< "Si el resultado es un número impar, inicia el jugador uno; si es un numero par, comienza el jugador dos."<<endl;
+        cout <<endl;
+        cout<< "Ahora si, que alguien lance un dado!!"<<endl;
+        cout <<endl;
+        system("pause");
+        cout <<endl;
+        dados[0]=lanzarDados();
+        cout<< "El numero del dado es: "<<dados[0]<<endl;
+        cout <<endl;
+        jugadorActual = dados[0] % 2 == 0 ? 2 : 1;
+        cout<<"Comienza el jugador nro "<< jugadorActual <<"!!"<< endl;
+        cout <<endl;
+        system("pause");
+}
+
+
 
  //Funcion para dibujar los dados.
  void mostrarCaraDado(int numero) {
@@ -101,59 +167,25 @@ using namespace std;
     bool bandera = true;
     int  dados[3]={};
     bool dobleNroProhibido[2] = {};
+    int acumNroProhibido[2] = {};
+    int acumLanzamiento[2]= {};
+    int jugadorActual;
+    int lanzamientos;
 
-    cout <<endl;
-    cout <<endl;
-    cout <<endl;
-    cout << "Antes de comenzar deben registrar sus nombres: "<<endl;
-    cout <<endl;
-    while(continuar == 'N'){
-        cout << "ingrese nombre de jugador 1: "<<endl;
-        cin >> jugador1;
-        cout << "ingrese nombre de jugador 2: "<<endl;
-        cin >> jugador2;
-        cout <<endl;
-        cout<< "Nombre jugador numero 1: "<<jugador1<<endl;
-        cout <<endl;
-        cout<< "Nombre jugador numero 2: "<<jugador2<<endl;
-        cout <<endl;
-        cout << "¿Confirmar nombres? (S/N) "<<endl;
-        cin >> continuar;
-        continuar = toupper(continuar);
-        cout <<endl;
-        system("cls");
-    }
+    cargarNombres(jugador1,jugador2,continuar);
+    jugadorInicial(jugadorActual,dados);
 
-        cout <<endl;
-        cout <<endl;
-        cout<<"Que comience el juego!!"<<endl;
-        cout <<endl;
-        cout<< "Recuerden que para tirar los dados lo van a hacer precionando la letra `T` + Enter.." <<endl;
-        cout <<endl;
-        cout<< "Antes de comenzar lancen un dado para ver quien comienza... "<<endl;
-        cout <<endl;
-        cout<< "Si el resultado es un número impar, inicia el jugador uno; si es un numero par, comienza el jugador dos."<<endl;
-        cout <<endl;
-        cout<< "Ahora si, que alguien lance un dado!!"<<endl;
-        cout <<endl;
-        dados[0]=lanzarDados();
-        cout<< "El numero del dado es: "<<dados[0]<<endl;
-        dobleNroProhibido[0] = false;
-        dobleNroProhibido[1] = false;
-        cout <<endl;
-        int jugadorActual = dados[0] % 2 == 0 ? 2 : 1;
-        cout<<"Comienza el jugador nro "<< jugadorActual <<"!!"<< endl;
-        cout <<endl;
+    dobleNroProhibido[0] = false;
+    dobleNroProhibido[1] = false;
 
 
-
-        for(int ronda = 1; ronda<=6;ronda++){
-        cout << "------------------------------------------" << endl;
-        cout <<endl;
+    for(int ronda = 1; ronda <= 6; ronda++){
+            system("cls");
             for (int turno = 0; turno < 2; turno++) {
+                lanzamientos = 0;
                 acumPuntos = 0;
-                bool turnoTerminado = false;
                 continuar = 'S';
+                bool turnoTerminado = false;
                 int nroDados = 3;
                 if(dobleNroProhibido[jugadorActual - 1]){
                     nroDados =2;
@@ -162,15 +194,33 @@ using namespace std;
                 int numerosIguales = 0;
 
                 while (continuar == 'S' && !turnoTerminado) {
-                        for(int i = 0;i<nroDados;i++){
+                        lanzamientos ++;
+                        separador('b');
+                        acumLanzamiento[jugadorActual - 1] ++;
+                        cout<<((jugadorActual == 1 )? jugador1 : jugador2)  <<" tire los dados"<<endl;
+                        system("pause");
+                        for(int i = 0; i < nroDados; i++){
                             dados[i] = lanzarDados();
                         }
-                        cout<<"Ronda nro: "<<ronda<<endl;
-                        cout << "------------------------------------------" << endl;
+                        system("cls");
+                        separador('b');
+                        cout <<"PUNTOS GANADOS:" <<endl;
                         cout <<endl;
-                        cout << "Turno del jugador: " << ((jugadorActual == 1) ? jugador1 : jugador2) << endl;
-                        cout << "Los dados que salieron son: " << endl;
-                        for(int i = 0;i<nroDados;i++){
+                        cout <<jugador1<<": "<<puntosJugador1<<" PUNTOS                  "<<jugador2<<": "<<puntosJugador2<<" PUNTOS"<<endl;
+                        cout <<endl;
+                        cout <<"Turno de: " << ((jugadorActual == 1) ? jugador1 : jugador2) << endl;
+                        cout <<endl;
+                        cout <<"+--------------------------------------------------+"<<endl;
+                        cout <<"|        Ronda #"<<ronda<<"                                  |"<<endl;
+                        cout <<"|        PUNTOS DE LA RONDA: "<<acumPuntos<<"                     |"<<endl;
+                        cout <<"|        LANZAMIENTOS: "<<lanzamientos<<"                           |"<<endl;
+                        cout <<"+--------------------------------------------------+"<<endl;
+                        cout <<endl;
+                        cout <<"NUMERO PROHIBIDO: "<<acumNroProhibido[jugadorActual-1]<<endl;
+                        cout <<endl;
+                        cout <<"LANZAMIENTO #" <<acumLanzamiento[jugadorActual-1]<< endl;
+                        cout <<endl;
+                        for(int i = 0; i < nroDados; i++){
                             mostrarCaraDado(dados[i]);
                         }
 
@@ -178,25 +228,32 @@ using namespace std;
 
                         if(numerosIguales == 1){
                             cout << "Malas noticias, sacaste el numero prohibido, perdiste "<<acumPuntos<< " puntos y pierdes el turno" << endl;
-                            acumPuntos = 0;
-                            dobleNroProhibido[jugadorActual -1]=false;
+                            dobleNroProhibido[jugadorActual -1] = false;
+                            acumNroProhibido[jugadorActual - 1] += 1;
+                            ((jugadorActual == 1) ? (puntosJugador1 -= acumPuntos) : (puntosJugador2 -= acumPuntos));
                             turnoTerminado = true;
+                             acumPuntos = 0;
+                            system("pause");
                         }else if(numerosIguales == 2){
                             cout << "Malas noticias, sacaste dos veces numero prohibido,  perdiste "<<acumPuntos<< " puntos  ,pierdes el turno y un dado para la proxima jugada"<<endl;
-                            acumPuntos = 0;
-                            dobleNroProhibido[jugadorActual] = true;
+                            dobleNroProhibido[jugadorActual - 1] = true;
+                            acumNroProhibido[jugadorActual - 1] += 2;
+                            ((jugadorActual == 1) ? (puntosJugador1 -= acumPuntos) : (puntosJugador2 -= acumPuntos));
                             turnoTerminado = true;
+                            acumPuntos = 0;
+                            system("pause");
                         }else if(numerosIguales == 3){
                             cout << "Malas noticias, sacaste tres veces numero prohibido, no sumas puntos ,pierdes el juego " << endl;
-                        }
-                         else {
+                            //llevar al final del juego.
+                            system("pause");
+                        }else {
                             dobleNroProhibido[jugadorActual - 1] = false;
-                            acumPuntos = sumar(nroDados,dados);
-                            cout << "Bien! sumaste " << acumPuntos << " puntos!" << endl;
+                            acumPuntos += sumar(nroDados,dados);
+                            cout << "Bien! sumaste " <<sumar(nroDados,dados) << " puntos!" << endl;
                             if (jugadorActual == 1) {
-                                puntosJugador1 += acumPuntos;
+                                puntosJugador1 += sumar(nroDados,dados);
                             } else {
-                                puntosJugador2 += acumPuntos;
+                                puntosJugador2 += sumar(nroDados,dados);
                             }
                             cout << "¿Quieres continuar? (S/N): ";
                             cin >> continuar;
@@ -205,14 +262,13 @@ using namespace std;
                                 turnoTerminado = true;
                             }
                         }
-                        cout << "*****************************************" << endl;
-                        cout <<endl;
+                        separador('s');
+                        system("cls");
                     }
-                cout << "------------------------------------------" << endl;
-                cout <<endl;
+
                 jugadorActual = (jugadorActual == 1) ? 2 : 1;
             }
-        }
+    }
     cout<<puntosJugador1<<endl;
     cout<<puntosJugador2<<endl;
 }
